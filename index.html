@@ -1,0 +1,47 @@
+<!DOCTYPE html><html class=''>
+<head>
+    <meta charset='UTF-8'>
+    <meta name="robots" content="noindex">
+    <title>Tower of London</title>   
+    <link rel='stylesheet' type='text/css' href='jspsych.css'>
+    <link rel='stylesheet' type='text/css' href='default_style.css'>
+    <link rel='stylesheet' type='text/css' href='style.css'>
+</head>
+
+<body>
+</body>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.4.1/math.min.js'></script>
+<script src='jspsych/jspsych.js'></script>
+<script src='jspsych/plugins/jspsych-text.js'></script>
+<script src='jspsych/poldrack_plugins/jspsych-poldrack-text.js'></script>
+<script src='jspsych/poldrack_plugins/jspsych-poldrack-instructions.js'></script>
+<script src='jspsych/poldrack_plugins/jspsych-attention-check.js'></script>
+<script src='jspsych/poldrack_plugins/jspsych-single-stim-button.js'></script>
+<script src='jspsych/poldrack_plugins/jspsych-poldrack-single-stim.js'></script>
+<script src='jspsych/plugins/jspsych-survey-text.js'></script>
+<script src='jspsych/poldrack_plugins/poldrack_utils.js'></script>
+<script src='experiment.js'></script>
+<script>
+function expfactory_run() {
+     jsPsych.init({
+                   timeline: tower_of_london_experiment,
+                   display_element: "getDisplayElement",
+                   fullscreen: true,
+                   on_trial_finish: function(data){
+                   addID('tower_of_london')
+                 },
+
+     on_finish: function(data){
+                  jsPsych.data.localSave('/scif/data/tower_of_london/tower_of_london_results.csv', 'csv');
+                  expfactory_finished = true;
+                 }
+     });
+}
+$(document).ready(function() {
+    expfactory_finished = false;
+    expfactory_run();
+});
+</script>
+</html>
