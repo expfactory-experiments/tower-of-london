@@ -1,5 +1,4 @@
-[
-    {
+ {
         "cognitive_atlas_task_id": "trm_4da87e439c411",
         "contributors": [
             "Ian Eisenberg",
@@ -40,5 +39,4 @@
         ],
         "template": "jspsych",
         "time": 5
-    }
-]
+}
