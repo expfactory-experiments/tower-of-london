@@ -30,11 +30,11 @@ function expfactory_run() {
                    display_element: "getDisplayElement",
                    fullscreen: true,
                    on_trial_finish: function(data){
-                   addID('tower_of_london')
+                   addID('tower-of-london')
                  },
 
      on_finish: function(data){
-                  jsPsych.data.localSave('/scif/data/tower_of_london/tower_of_london_results.csv', 'csv');
+                  jsPsych.data.localSave('tower-of-london_results.csv', 'csv');
                   expfactory_finished = true;
                  }
      });
