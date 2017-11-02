@@ -1,5 +1,6 @@
  {
-        "cognitive_atlas_task_id": "trm_4da87e439c411",
+        "exp_id": "tower-of-london",
+        "name": "Tower of London",
         "url": "https://www.github.com/expfactory-experiments/tower-of-london",
         "description":"the tower of london is a test of spatial intelligence.",
         "contributors": [
@@ -9,16 +10,7 @@
             "Vanessa Sochat",
             "Russell Poldrack"
         ],
-        "deployment_variables": {
-            "jspsych_init": {
-                "display_element": "getDisplayElement",
-                "fullscreen": true,
-                "on_trial_finish": "addID('tower_of_london')"
-            }
-        },
-        "exp_id": "tower-of-london",
-        "name": "Tower of London",
-        "publish": "True",
+        "cognitive_atlas_task_id": "trm_4da87e439c411",
         "reference": [
             "http://rstb.royalsocietypublishing.org/content/royptb/298/1089/199.full.pdf",
             "https://www.researchgate.net/publication/11201010_The_Tower_of_London_Spatial_Problem-Solving_Task_Enhancing_Clinical_and_Research_Implementation"
