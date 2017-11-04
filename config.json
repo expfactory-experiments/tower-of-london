@@ -3,6 +3,7 @@
         "name": "Tower of London",
         "url": "https://www.github.com/expfactory-experiments/tower-of-london",
         "description":"the tower of london is a test of spatial intelligence.",
+        "instructions": "Click to move the donuts to achieve the resulting configuration.",
         "contributors": [
             "Ian Eisenberg",
             "Zeynep Enkavi",
