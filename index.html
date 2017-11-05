@@ -33,10 +33,29 @@ function expfactory_run() {
                    addID('tower-of-london')
                  },
 
-     on_finish: function(data){
-                  jsPsych.data.localSave('tower-of-london_results.csv', 'csv');
-                  expfactory_finished = true;
-                 }
+             on_finish: function(data){
+
+                 // Serialize the data
+                 var promise = new Promise(function(resolve, reject) {
+                     var data = jsPsych.data.dataAsJSON();
+                     resolve(data);
+                 })
+
+                 promise.then(function(data) {
+
+                     $.post("/save", {data: data}, function(){
+                        document.location = "/next";
+                     })
+
+                 }, function(err) {
+                      console.log(err);
+
+                       // If error, assue local save
+                       jsPsych.data.localSave('tower-of-london_results.csv', 'csv');
+                 });
+             }
+
+
      });
 }
 $(document).ready(function() {
