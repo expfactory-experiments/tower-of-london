@@ -24,14 +24,15 @@
 <script src='jspsych/poldrack_plugins/poldrack_utils.js'></script>
 <script src='experiment.js'></script>
 <script>
-function expfactory_run() {
-     jsPsych.init({
-                   timeline: tower_of_london_experiment,
-                   display_element: "getDisplayElement",
-                   fullscreen: true,
-                   on_trial_finish: function(data){
-                   addID('tower-of-london')
-                 },
+$( document ).ready(function() {
+
+    jsPsych.init({
+             timeline: tower_of_london_experiment,
+             display_element: "getDisplayElement",
+             fullscreen: true,
+             on_trial_finish: function(data){
+               addID('tower-of-london')
+             },
 
              on_finish: function(data){
 
@@ -43,28 +44,18 @@ function expfactory_run() {
 
                  promise.then(function(data) {
 
-                     $.post("/save", {data: data}, function(){
-                        document.location = "/next";
-                     })
-
-                 }, function(err) {
-                      console.log(err);
-
-                       if (err.status == 200){
-                           document.location = "/next";
-                       }
-
-                       // If error, assue local save
-                       jsPsych.data.localSave('tower-of-london_results.csv', 'csv');
-                 });
+                     $.ajax({
+                         type: "POST",
+                         url: '/save',
+                         data: { "data": data },
+                         success: function(){ document.location = "/next" },
+                         dataType: "application/json",
+                         error: function(err) { jsPsych.data.localSave('tower-of-london_results.csv', 'csv')}
+                     });
+                 })
              }
 
-
-     });
-}
-$(document).ready(function() {
-    expfactory_finished = false;
-    expfactory_run();
+      });
 });
 </script>
 </html>
